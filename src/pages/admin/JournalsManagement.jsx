@@ -157,58 +157,60 @@ const JournalsManagement = () => {
       animate={{ opacity: 1, y: 0 }}
       className="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-200"
     >
-      <div className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <FiBook className="w-5 h-5 text-blue-600" />
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3 sm:mb-4 space-y-2 sm:space-y-0">
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <div className="p-1.5 sm:p-2 bg-blue-100 rounded-lg flex-shrink-0">
+              <FiBook className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-gray-900 truncate">
+              <h3 className="text-sm sm:text-base font-semibold text-gray-900 truncate">
                 {journal.title}
               </h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-xs sm:text-sm text-gray-500 truncate">
                 by {journal.studentName}
               </p>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <Badge variant="secondary" className={getMoodColor(journal.mood)}>
+          <div className="flex items-center justify-start sm:justify-end">
+            <Badge variant="secondary" className={`${getMoodColor(journal.mood)} text-xs`}>
               <span className="mr-1">{getMoodIcon(journal.mood)}</span>
               {journal.mood}
             </Badge>
           </div>
         </div>
 
-        <div className="space-y-3 mb-4">
-          <div className="flex items-center text-sm text-gray-600">
-            <FiUser className="w-4 h-4 mr-2" />
-            <span className="font-medium">Student ID:</span>
-            <span className="ml-1">{journal.studentId}</span>
+        <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center text-xs sm:text-sm text-gray-600 space-y-1 sm:space-y-0">
+            <div className="flex items-center">
+              <FiUser className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+              <span className="font-medium">Student ID:</span>
+              <span className="ml-1 truncate">{journal.studentId}</span>
+            </div>
           </div>
           
-          <div className="flex items-center text-sm text-gray-600">
-            <FiCalendar className="w-4 h-4 mr-2" />
+          <div className="flex items-center text-xs sm:text-sm text-gray-600">
+            <FiCalendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
             <span className="font-medium">Created:</span>
-            <span className="ml-1">{formatDate(journal.createdAt)}</span>
+            <span className="ml-1 truncate">{formatDate(journal.createdAt)}</span>
           </div>
         </div>
 
-        <div className="mb-4">
-          <p className="text-sm text-gray-700 line-clamp-3 bg-gray-50 p-3 rounded-lg">
+        <div className="mb-3 sm:mb-4">
+          <p className="text-xs sm:text-sm text-gray-700 line-clamp-3 bg-gray-50 p-2 sm:p-3 rounded-lg">
             {journal.content}
           </p>
         </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <div className="flex items-center space-x-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-3 sm:pt-4 border-t border-gray-100 space-y-2 sm:space-y-0">
+          <div className="flex items-center space-x-1 sm:space-x-2 flex-wrap">
             {journal.isPrivate && (
               <Badge variant="secondary" className="text-xs">
                 Private
               </Badge>
             )}
             {journal.tags && journal.tags.length > 0 && (
-              <div className="flex items-center space-x-1">
+              <div className="flex items-center space-x-1 flex-wrap">
                 {journal.tags.slice(0, 2).map((tag, index) => (
                   <Badge key={index} variant="outline" className="text-xs">
                     {tag}
@@ -223,14 +225,14 @@ const JournalsManagement = () => {
             )}
           </div>
           
-          <div className="flex space-x-2">
+          <div className="flex justify-end sm:justify-start">
             <Button
               variant="outline"
               size="sm"
               onClick={() => handleViewJournal(journal)}
-              className="flex items-center space-x-1"
+              className="flex items-center space-x-1 w-full sm:w-auto justify-center text-xs sm:text-sm"
             >
-              <FiEye className="w-4 h-4" />
+              <FiEye className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>View</span>
             </Button>
           </div>
@@ -243,33 +245,35 @@ const JournalsManagement = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#003049] to-[#0056b3] text-white">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold mb-2">Journal Management</h1>
-              <p className="text-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row sm:items-center sm:justify-between">
+            <div className="text-center sm:text-left">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">Journal Management</h1>
+              <p className="text-blue-100 text-sm sm:text-base">
                 View and manage all student journal entries
               </p>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
               <Button
                 variant="secondary"
                 onClick={fetchJournals}
                 disabled={loading}
-                className="flex items-center space-x-2"
+                className="flex items-center justify-center space-x-2 text-sm sm:text-base"
               >
-                <FiRefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
-                <span>Refresh</span>
+                <FiRefreshCw className={`w-3 h-3 sm:w-4 sm:h-4 ${loading ? "animate-spin" : ""}`} />
+                <span className="hidden sm:inline">Refresh</span>
+                <span className="sm:hidden">↻</span>
               </Button>
               <Button
                 variant="outline"
                 onClick={() => setShowFilters(!showFilters)}
-                className="flex items-center space-x-2 text-white border-white hover:bg-white/10"
+                className="flex items-center justify-center space-x-2 text-white border-white hover:bg-white/10 text-sm sm:text-base"
               >
-                <FiFilter className="w-4 h-4" />
-                <span>Filters</span>
+                <FiFilter className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Filters</span>
+                <span className="sm:hidden">⚙</span>
                 <FiChevronDown
-                  className={`w-4 h-4 transition-transform ${
+                  className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform ${
                     showFilters ? "rotate-180" : ""
                   }`}
                 />
@@ -313,27 +317,27 @@ const JournalsManagement = () => {
         </AnimatePresence>
 
         {/* Search and Filters */}
-        <div className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex flex-col md:flex-row md:items-center gap-4">
-            <div className="relative flex-1">
+        <div className="mb-4 sm:mb-6 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+          <div className="flex flex-col gap-3 sm:gap-4">
+            <div className="relative w-full">
               <input
                 type="text"
-                placeholder="Search journals by title, content, or student name..."
+                placeholder="Search journals..."
                 value={searchTerm}
                 onChange={handleSearch}
-                className="w-full px-4 py-2 pl-10 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003049] focus:border-transparent"
+                className="w-full px-4 py-2 pl-9 sm:pl-10 pr-8 sm:pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003049] focus:border-transparent text-sm sm:text-base"
               />
-              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-3 h-3 sm:w-4 sm:h-4" />
               {searchTerm && (
                 <button
                   onClick={clearSearch}
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
-                  <FiX className="w-4 h-4" />
+                  <FiX className="w-3 h-3 sm:w-4 sm:h-4" />
                 </button>
               )}
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-xs sm:text-sm text-gray-600 text-center sm:text-left">
               {filters.mood !== "all" ? (
                 <>
                   {filteredCount} of {totalCount} journal{totalCount !== 1 ? "s" : ""} 
@@ -357,21 +361,21 @@ const JournalsManagement = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+              className="mb-4 sm:mb-6 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
             >
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 text-center sm:text-left">
                   Filter Options
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-1 md:grid-cols-2 sm:gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2 text-center sm:text-left">
                       Mood
                     </label>
                     <select
                       value={filters.mood}
                       onChange={(e) => handleFilterChange("mood", e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003049] focus:border-transparent"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003049] focus:border-transparent text-sm sm:text-base"
                     >
                       <option value="all">All Moods</option>
                       <option value="Happy">😊 Happy</option>
@@ -384,19 +388,19 @@ const JournalsManagement = () => {
                       <option value="Neutral">😐 Neutral</option>
                     </select>
                   </div>
-                  <div className="flex items-end">
+                  <div className="flex items-end justify-center sm:justify-start">
                     <Button
                       variant="outline"
                       onClick={clearFilters}
-                      className="w-full"
+                      className="w-full sm:w-auto text-sm sm:text-base"
                     >
                       Clear Filters
                     </Button>
                   </div>
                 </div>
                 {filters.mood !== "all" && (
-                  <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-                    <p className="text-sm text-blue-800">
+                  <div className="mt-3 sm:mt-4 p-3 bg-blue-50 rounded-lg">
+                    <p className="text-xs sm:text-sm text-blue-800 text-center sm:text-left">
                       <strong>Active Filter:</strong> Showing only journals with mood "{filters.mood}"
                     </p>
                   </div>
@@ -439,7 +443,7 @@ const JournalsManagement = () => {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
               {journalsToDisplay.map((journal) => (
                 <JournalCard key={journal._id} journal={journal} />
               ))}
@@ -447,11 +451,13 @@ const JournalsManagement = () => {
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-              />
+              <div className="mt-6 sm:mt-8">
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
+              </div>
             )}
           </>
         )}
@@ -534,4 +540,4 @@ const JournalsManagement = () => {
   );
 };
 
-export default JournalsManagement; 
+export default JournalsManagement;

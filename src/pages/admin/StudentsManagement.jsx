@@ -67,37 +67,37 @@ const StudentCard = ({ student, onView, onEdit, onToggleStatus, index }) => {
       transition={{ delay: index * 0.1, duration: 0.4 }}
       className="group"
     >
-      <Card className="p-6 hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50">
+      <Card className="p-4 sm:p-6 hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50">
         <div className="flex items-start justify-between">
-          <div className="flex items-start space-x-4 flex-1">
+          <div className="flex items-start space-x-3 sm:space-x-4 flex-1 min-w-0">
             {/* Avatar */}
             <Avatar
               src={student.profilePicture}
               alt={student.fullName}
               initials={student.fullName?.split(" ").map(n => n[0]).join("") || "S"}
-              size="lg"
-              className="ring-2 ring-gray-100 group-hover:ring-[#003049]/20 transition-all"
+              size="md"
+              className="ring-2 ring-gray-100 group-hover:ring-[#003049]/20 transition-all flex-shrink-0 sm:size-lg"
             />
 
             {/* Student Info */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center space-x-3 mb-2">
-                <h3 className="text-lg font-semibold text-gray-900 truncate">
+              <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-3 mb-2">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 truncate">
                   {student.fullName}
                 </h3>
                 <Badge
                   variant={student.isActive ? "success" : "error"}
-                  className={student.isActive ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}
+                  className={`text-xs ${student.isActive ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"} self-start sm:self-auto`}
                 >
                   {student.isActive ? "Active" : "Inactive"}
                 </Badge>
               </div>
 
-              <div className="space-y-2">
-                <div className="flex items-center text-sm text-gray-600">
-                  <FiUser className="w-4 h-4 mr-2 text-[#003049]" />
+              <div className="space-y-1 sm:space-y-2">
+                <div className="flex items-center text-xs sm:text-sm text-gray-600">
+                  <FiUser className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#003049] flex-shrink-0" />
                   <span className="font-medium">ID:</span>
-                  <span className="ml-1">{student.studentId}</span>
+                  <span className="ml-1 truncate">{student.studentId}</span>
                 </div>
 
                 <div className="flex items-center text-sm text-gray-600">
@@ -683,12 +683,12 @@ const StudentsManagement = () => {
 
   if (loading && students.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white p-6">
-        <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-gray-200 rounded w-1/4"></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6">
+        <div className="animate-pulse space-y-4 sm:space-y-6">
+          <div className="h-6 sm:h-8 bg-gray-200 rounded w-1/2 sm:w-1/4"></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="h-64 bg-gray-100 rounded-xl"></div>
+              <div key={i} className="h-48 sm:h-64 bg-gray-100 rounded-xl"></div>
             ))}
           </div>
         </div>
@@ -700,76 +700,84 @@ const StudentsManagement = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#003049] via-[#d62828] to-[#f77f00] text-white">
-        <div className="p-8">
+        <div className="p-4 sm:p-6 lg:p-8">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-between"
+            className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0"
           >
-            <div>
-              <h1 className="text-4xl font-bold mb-2 flex items-center">
-                <FiUsers className="w-8 h-8 mr-3" />
-                Students Management
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 flex items-center">
+                <FiUsers className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 mr-2 sm:mr-3 flex-shrink-0" />
+                <span className="truncate">Students Management</span>
               </h1>
-              <p className="text-white/90 flex items-center">
-                <span className="mr-4">Manage and monitor student accounts</span>
-                <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+              <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                <p className="text-white/90 text-sm sm:text-base">
+                  Manage and monitor student accounts
+                </p>
+                <Badge variant="secondary" className="bg-white/20 text-white border-white/30 self-start sm:self-auto">
                   {totalStudents} Total Students
                 </Badge>
-              </p>
+              </div>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <Button
                 onClick={handleRefresh}
                 loading={refreshing}
-                className="bg-white/20 hover:bg-white/30 text-white border-white/30"
+                className="bg-white/20 hover:bg-white/30 text-white border-white/30 text-sm sm:text-base"
+                size="sm"
               >
-                <FiRefreshCw className="w-4 h-4 mr-2" />
-                Refresh
+                <FiRefreshCw className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">Refresh</span>
               </Button>
               <Button 
                 onClick={handleExport}
                 loading={isExporting}
-                className="bg-gradient-to-r from-[#fcbf49] to-[#f77f00] text-white"
+                className="bg-gradient-to-r from-[#fcbf49] to-[#f77f00] text-white text-sm sm:text-base"
+                size="sm"
               >
-                <FiDownload className="w-4 h-4 mr-2" />
-                Export CSV
+                <FiDownload className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">Export CSV</span>
+                <span className="sm:hidden">Export</span>
               </Button>
             </div>
           </motion.div>
         </div>
       </div>
 
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Filters and Search */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
-          <Card className="p-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-              <div className="flex-1 max-w-md">
+          <Card className="p-4 sm:p-6">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+              <div className="flex-1 lg:max-w-md">
                 <div className="relative">
-                  <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
                   <Input
                     placeholder="Search students by name, email, or ID..."
                     value={searchTerm}
                     onChange={(e) => handleSearch(e.target.value)}
-                    className="pl-10"
+                    className="pl-9 sm:pl-10 text-sm sm:text-base"
                   />
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2 sm:space-x-3">
                 <Button 
                   variant="outline" 
-                  className="flex items-center"
+                  className="flex items-center text-sm sm:text-base"
                   onClick={() => setShowFilters(!showFilters)}
+                  size="sm"
                 >
-                  <FiFilter className="w-4 h-4 mr-2" />
-                  Filters {Object.values(filters).some(v => v) && (
-                    <Badge className="ml-2 bg-[#d62828] text-white">
+                  <FiFilter className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  <span className="hidden sm:inline">Filters</span>
+                  <span className="sm:hidden">Filter</span>
+                  {Object.values(filters).some(v => v) && (
+                    <Badge className="ml-1 sm:ml-2 bg-[#d62828] text-white text-xs">
                       {Object.values(filters).filter(v => v).length}
                     </Badge>
                   )}
@@ -778,10 +786,11 @@ const StudentsManagement = () => {
                   <Button 
                     variant="ghost"
                     onClick={clearFilters}
-                    className="text-[#d62828] hover:text-[#d62828]"
+                    className="text-[#d62828] hover:text-[#d62828] text-sm sm:text-base"
+                    size="sm"
                   >
-                    <FiX className="w-4 h-4 mr-1" />
-                    Clear
+                    <FiX className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                    <span className="hidden sm:inline">Clear</span>
                   </Button>
                 )}
               </div>
@@ -798,9 +807,9 @@ const StudentsManagement = () => {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="p-6 mb-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Filter Students</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+              <Card className="p-4 sm:p-6 mb-4 sm:mb-6">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Filter Students</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
                     <select
@@ -890,7 +899,7 @@ const StudentsManagement = () => {
           const filteredStudents = getFilteredStudents();
           return filteredStudents.length > 0 ? (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 {filteredStudents.map((student, index) => (
                 <StudentCard
                   key={student.id || student._id}
@@ -918,12 +927,12 @@ const StudentsManagement = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-12"
+              className="text-center py-8 sm:py-12"
             >
-              <Card className="p-12 max-w-md mx-auto">
-                <FiUsers className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No students found</h3>
-                <p className="text-gray-500 mb-4">
+              <Card className="p-6 sm:p-12 max-w-md mx-auto">
+                <FiUsers className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300 mx-auto mb-3 sm:mb-4" />
+                <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">No students found</h3>
+                <p className="text-sm sm:text-base text-gray-500 mb-4">
                   {searchTerm 
                     ? `No students match "${searchTerm}"`
                     : "No students have been registered yet"}
@@ -932,6 +941,7 @@ const StudentsManagement = () => {
                   <Button
                     onClick={() => handleSearch("")}
                     variant="outline"
+                    size="sm"
                   >
                     Clear search
                   </Button>
@@ -954,4 +964,4 @@ const StudentsManagement = () => {
   );
 };
 
-export default StudentsManagement; 
+export default StudentsManagement;

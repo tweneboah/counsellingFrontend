@@ -99,10 +99,6 @@ const JournalEditor = ({
     }
   };
 
-  const handleCloseDeleteConfirmation = () => {
-    setShowDeleteConfirmation(false);
-  };
-
   const handleSave = async () => {
     if (!title || !content) {
       setError("Please provide a title and content for your journal entry");
@@ -584,18 +580,6 @@ const JournalEditor = ({
         )}
       </motion.div>
 
-      {/* Delete Confirmation Modal */}
-      <ConfirmationModal
-        isOpen={showDeleteConfirmation}
-        onClose={handleCloseDeleteConfirmation}
-        onConfirm={confirmDelete}
-        title="Delete Journal Entry"
-        message="Are you sure you want to delete this journal entry? This action cannot be undone."
-        confirmText="Delete"
-        cancelText="Cancel"
-        variant="danger"
-      />
-
       {/* Success Modal */}
       <SuccessModal
         isOpen={showSuccessModal}
@@ -603,6 +587,19 @@ const JournalEditor = ({
         title="Success!"
         message={successMessage}
         buttonText="Continue"
+      />
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={showDeleteConfirmation}
+        onClose={() => setShowDeleteConfirmation(false)}
+        onConfirm={confirmDelete}
+        title="Delete Journal Entry"
+        message="Are you sure you want to delete this journal entry? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+        variant="danger"
+        isLoading={loading}
       />
     </motion.div>
   );

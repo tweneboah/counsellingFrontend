@@ -150,7 +150,7 @@ const LoginForm = () => {
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { value: "student", label: "Student", icon: "📚" },
-                  { value: "counselor", label: "Counselor", icon: "👨‍⚕️" },
+                  { value: "counselor", label: "Counselor/Admin", icon: "👨‍⚕️" },
                 ].map((option) => (
                   <motion.label
                     key={option.value}
@@ -164,17 +164,21 @@ const LoginForm = () => {
                       {...register("userType")}
                       className="sr-only"
                     />
-                    <div className={`flex items-center justify-center p-4 rounded-xl border-2 transition-all duration-200 group ${
-                      selectedUserType === option.value
-                        ? "border-[#f77f00] bg-[#f77f00]/5"
-                        : "border-gray-200 hover:border-[#f77f00]"
-                    }`}>
-                      <span className="text-2xl mr-2">{option.icon}</span>
-                      <span className={`font-medium ${
+                    <div
+                      className={`flex items-center justify-center p-4 rounded-xl border-2 transition-all duration-200 group ${
                         selectedUserType === option.value
-                          ? "text-[#003049]"
-                          : "text-gray-700 group-hover:text-[#003049]"
-                      }`}>
+                          ? "border-[#f77f00] bg-[#f77f00]/5"
+                          : "border-gray-200 hover:border-[#f77f00]"
+                      }`}
+                    >
+                      <span className="text-2xl mr-2">{option.icon}</span>
+                      <span
+                        className={`font-medium ${
+                          selectedUserType === option.value
+                            ? "text-[#003049]"
+                            : "text-gray-700 group-hover:text-[#003049]"
+                        }`}
+                      >
                         {option.label}
                       </span>
                       {selectedUserType === option.value && (

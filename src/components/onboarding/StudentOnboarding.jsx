@@ -365,7 +365,7 @@ const StudentOnboarding = () => {
                         value="true"
                         className="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300"
                         checked={formData.previousCounseling === true}
-                        onChange={() => setFormData(prev => ({ ...prev, previousCounseling: true }))}
+                        onChange={(e) => setFormData(prev => ({ ...prev, previousCounseling: true }))}
                       />
                       <label
                         htmlFor="previousCounseling-yes"
@@ -382,7 +382,7 @@ const StudentOnboarding = () => {
                         value="false"
                         className="h-4 w-4 text-cyan-600 focus:ring-cyan-500 border-gray-300"
                         checked={formData.previousCounseling === false}
-                        onChange={() => setFormData(prev => ({ ...prev, previousCounseling: false }))}
+                        onChange={(e) => setFormData(prev => ({ ...prev, previousCounseling: false }))}
                       />
                       <label
                         htmlFor="previousCounseling-no"

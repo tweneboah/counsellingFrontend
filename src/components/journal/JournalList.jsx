@@ -587,18 +587,6 @@ const JournalList = ({ onSelectEntry, className = "" }) => {
         </div>
       </motion.div>
 
-      {/* Delete Confirmation Modal */}
-      <ConfirmationModal
-        isOpen={showDeleteConfirmation}
-        onClose={handleCloseDeleteConfirmation}
-        onConfirm={confirmDeleteEntry}
-        title="Delete Journal Entry"
-        message="Are you sure you want to delete this journal entry? This action cannot be undone."
-        confirmText="Delete"
-        cancelText="Cancel"
-        variant="danger"
-      />
-
       {/* Success Modal */}
       <SuccessModal
         isOpen={showSuccessModal}
@@ -606,6 +594,19 @@ const JournalList = ({ onSelectEntry, className = "" }) => {
         title="Success!"
         message={successMessage}
         buttonText="Continue"
+      />
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={showDeleteConfirmation}
+        onClose={() => setShowDeleteConfirmation(false)}
+        onConfirm={confirmDeleteEntry}
+        title="Delete Journal Entry"
+        message="Are you sure you want to delete this journal entry? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+        variant="danger"
+        isLoading={loading}
       />
     </motion.div>
   );

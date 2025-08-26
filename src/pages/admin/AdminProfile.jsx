@@ -192,13 +192,13 @@ const AdminProfile = () => {
 
   if (loading && !profileData) {
     return (
-      <div className="min-h-screen bg-gray-50 p-6">
+      <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
         <div className="max-w-4xl mx-auto">
           <div className="animate-pulse">
-            <div className="h-32 bg-gray-200 rounded-2xl mb-6"></div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="h-96 bg-gray-200 rounded-2xl"></div>
-              <div className="md:col-span-2 h-96 bg-gray-200 rounded-2xl"></div>
+            <div className="h-24 sm:h-32 bg-gray-200 rounded-2xl mb-4 sm:mb-6"></div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+              <div className="h-80 sm:h-96 bg-gray-200 rounded-2xl"></div>
+              <div className="lg:col-span-2 h-80 sm:h-96 bg-gray-200 rounded-2xl"></div>
             </div>
           </div>
         </div>
@@ -210,42 +210,45 @@ const AdminProfile = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#003049] to-[#0056b3] text-white">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold mb-2">Profile Settings</h1>
-              <p className="text-blue-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-2 truncate">Profile Settings</h1>
+              <p className="text-blue-100 text-sm sm:text-base">
                 Manage your account information and preferences
               </p>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               {!isEditing && !showPasswordForm ? (
                 <Button
                   variant="secondary"
                   onClick={() => setIsEditing(true)}
-                  className="flex items-center space-x-2"
+                  className="flex items-center space-x-1 sm:space-x-2 text-sm sm:text-base px-3 sm:px-4 py-2"
                 >
-                  <FiEdit2 className="w-4 h-4" />
-                  <span>Edit Profile</span>
+                  <FiEdit2 className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="hidden sm:inline">Edit Profile</span>
+                  <span className="sm:hidden">Edit</span>
                 </Button>
               ) : (
                 <div className="flex space-x-2">
                   <Button
                     variant="outline"
                     onClick={isEditing ? cancelEdit : cancelPasswordEdit}
-                    className="flex items-center space-x-2 bg-white/10 border-white/20 text-white hover:bg-white/20"
+                    className="flex items-center space-x-1 sm:space-x-2 bg-white/10 border-white/20 text-white hover:bg-white/20 text-sm sm:text-base px-3 sm:px-4 py-2"
                   >
-                    <FiX className="w-4 h-4" />
-                    <span>Cancel</span>
+                    <FiX className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Cancel</span>
+                    <span className="sm:hidden">Cancel</span>
                   </Button>
                   <Button
                     variant="secondary"
                     onClick={isEditing ? handleSubmit : handlePasswordSubmit}
                     disabled={loading}
-                    className="flex items-center space-x-2"
+                    className="flex items-center space-x-1 sm:space-x-2 text-sm sm:text-base px-3 sm:px-4 py-2"
                   >
-                    <FiSave className="w-4 h-4" />
-                    <span>Save Changes</span>
+                    <FiSave className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Save Changes</span>
+                    <span className="sm:hidden">Save</span>
                   </Button>
                 </div>
               )}
@@ -254,7 +257,7 @@ const AdminProfile = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Status Messages */}
         {error && (
           <motion.div
@@ -279,16 +282,16 @@ const AdminProfile = () => {
         )}
 
         {profileData && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* Profile Card */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="lg:col-span-1"
             >
-              <Card className="p-8 bg-white shadow-sm border-0">
+              <Card className="p-6 sm:p-8 bg-white shadow-sm border-0">
                 <div className="flex flex-col items-center text-center">
-                  <div className="mb-6">
+                  <div className="mb-4 sm:mb-6">
                     <Avatar
                       size="2xl"
                       src={profileData.profilePicture}
@@ -297,10 +300,10 @@ const AdminProfile = () => {
                     />
                   </div>
 
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 truncate max-w-full">
                     {profileData.fullName}
                   </h2>
-                  <p className="text-gray-600 mb-4">{profileData.staffId}</p>
+                  <p className="text-gray-600 mb-4 text-sm sm:text-base">{profileData.staffId}</p>
 
                   <div className="flex items-center space-x-2 mb-6">
                     <Badge className={`${getRoleColor(profileData.role)} px-3 py-1`}>
@@ -314,39 +317,39 @@ const AdminProfile = () => {
                     )}
                   </div>
 
-                  <div className="w-full space-y-4">
-                    <div className="flex items-center text-gray-600">
-                      <FiMail className="w-4 h-4 mr-3" />
-                      <span className="text-sm">{profileData.email}</span>
+                  <div className="w-full space-y-3 sm:space-y-4">
+                    <div className="flex items-start text-gray-600">
+                      <FiMail className="w-4 h-4 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm break-all">{profileData.email}</span>
                     </div>
                     {profileData.phoneNumber && (
                       <div className="flex items-center text-gray-600">
-                        <FiPhone className="w-4 h-4 mr-3" />
-                        <span className="text-sm">{profileData.phoneNumber}</span>
+                        <FiPhone className="w-4 h-4 mr-3 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm">{profileData.phoneNumber}</span>
                       </div>
                     )}
-                    <div className="flex items-center text-gray-600">
-                      <FiMapPin className="w-4 h-4 mr-3" />
-                      <span className="text-sm">{profileData.department}</span>
+                    <div className="flex items-start text-gray-600">
+                      <FiMapPin className="w-4 h-4 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-xs sm:text-sm">{profileData.department}</span>
                     </div>
                     {profileData.lastLogin && (
-                      <div className="flex items-center text-gray-600">
-                        <FiCalendar className="w-4 h-4 mr-3" />
-                        <span className="text-sm">
+                      <div className="flex items-start text-gray-600">
+                        <FiCalendar className="w-4 h-4 mr-3 mt-0.5 flex-shrink-0" />
+                        <span className="text-xs sm:text-sm">
                           Last login: {formatDate(profileData.lastLogin)}
                         </span>
                       </div>
                     )}
                   </div>
 
-                  <div className="w-full mt-8 pt-6 border-t border-gray-200">
+                  <div className="w-full mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
                     <Button
                       variant="outline"
                       onClick={() => setShowPasswordForm(true)}
                       disabled={isEditing}
-                      className="w-full flex items-center justify-center space-x-2"
+                      className="w-full flex items-center justify-center space-x-2 text-sm sm:text-base py-2 sm:py-3"
                     >
-                      <FiLock className="w-4 h-4" />
+                      <FiLock className="w-3 h-3 sm:w-4 sm:h-4" />
                       <span>Change Password</span>
                     </Button>
                   </div>
@@ -600,4 +603,4 @@ const AdminProfile = () => {
   );
 };
 
-export default AdminProfile; 
+export default AdminProfile;

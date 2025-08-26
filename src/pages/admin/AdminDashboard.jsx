@@ -23,26 +23,26 @@ const StatCard = ({ icon, title, value, subtitle, trend, trendValue, bgGradient,
     transition={{ delay, duration: 0.5 }}
     className="relative"
   >
-    <Card className="p-6 bg-gradient-to-br from-white to-gray-50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+    <Card className="p-4 sm:p-6 bg-gradient-to-br from-white to-gray-50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
       {/* Background gradient overlay */}
       <div className={`absolute inset-0 ${bgGradient} opacity-5`}></div>
       
       <div className="relative z-10">
         <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <p className="text-gray-600 text-sm font-medium mb-1">{title}</p>
-            <h3 className="text-3xl font-bold text-gray-900 mb-2">{value}</h3>
-            {subtitle && <p className="text-gray-500 text-xs">{subtitle}</p>}
+          <div className="flex-1 min-w-0">
+            <p className="text-gray-600 text-xs sm:text-sm font-medium mb-1 truncate">{title}</p>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">{value}</h3>
+            {subtitle && <p className="text-gray-500 text-xs truncate">{subtitle}</p>}
             {trend !== undefined && trendValue !== undefined && (
-              <div className={`flex items-center mt-3 text-sm ${
+              <div className={`flex items-center mt-2 sm:mt-3 text-xs sm:text-sm ${
                 trend > 0 ? "text-green-600" : trend < 0 ? "text-red-500" : "text-gray-500"
               }`}>
                 {trend > 0 ? (
-                  <FiTrendingUp className="w-4 h-4 mr-1" />
+                  <FiTrendingUp className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                 ) : trend < 0 ? (
-                  <FiTrendingDown className="w-4 h-4 mr-1" />
+                  <FiTrendingDown className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                 ) : (
-                  <FiActivity className="w-4 h-4 mr-1" />
+                  <FiActivity className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                 )}
                 <span className="font-medium">
                   {trend === 0 ? "No change" : `${Math.abs(trendValue)}% ${trend > 0 ? "increase" : "decrease"}`}
@@ -50,8 +50,10 @@ const StatCard = ({ icon, title, value, subtitle, trend, trendValue, bgGradient,
               </div>
             )}
           </div>
-          <div className={`p-4 rounded-2xl ${iconBg} shadow-lg`}>
-            {icon}
+          <div className={`p-2 sm:p-3 lg:p-4 rounded-xl sm:rounded-2xl ${iconBg} shadow-lg flex-shrink-0 ml-2`}>
+            <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7">
+              {icon}
+            </div>
           </div>
         </div>
       </div>
@@ -64,29 +66,29 @@ const ActivityCard = ({ activity, index }) => (
     initial={{ opacity: 0, x: -20 }}
     animate={{ opacity: 1, x: 0 }}
     transition={{ delay: index * 0.1, duration: 0.4 }}
-    className="flex items-center p-4 rounded-lg hover:bg-gray-50 transition-colors"
+    className="flex items-center p-3 sm:p-4 rounded-lg hover:bg-gray-50 transition-colors"
   >
-    <div className="flex-shrink-0 mr-4">
-      <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+    <div className="flex-shrink-0 mr-3 sm:mr-4">
+      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center ${
         activity.type === "chat" ? "bg-blue-100 text-[#003049]" :
         activity.type === "appointment" ? "bg-orange-100 text-[#f77f00]" :
         activity.type === "student" ? "bg-green-100 text-green-600" :
         "bg-red-100 text-[#d62828]"
       }`}>
-        {activity.type === "chat" && <FiMessageCircle className="w-5 h-5" />}
-        {activity.type === "appointment" && <FiCalendar className="w-5 h-5" />}
-        {activity.type === "student" && <FiUsers className="w-5 h-5" />}
+        {activity.type === "chat" && <FiMessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />}
+        {activity.type === "appointment" && <FiCalendar className="w-4 h-4 sm:w-5 sm:h-5" />}
+        {activity.type === "student" && <FiUsers className="w-4 h-4 sm:w-5 sm:h-5" />}
       </div>
     </div>
     <div className="flex-1 min-w-0">
-      <p className="text-sm font-medium text-gray-900 truncate">
+      <p className="text-xs sm:text-sm font-medium text-gray-900 truncate">
         {activity.title}
       </p>
-      <p className="text-xs text-gray-500 mt-1">
+      <p className="text-xs text-gray-500 mt-1 truncate">
         {activity.description}
       </p>
     </div>
-    <div className="flex-shrink-0 text-xs text-gray-400">
+    <div className="flex-shrink-0 text-xs text-gray-400 ml-2">
       {activity.time}
     </div>
   </motion.div>
@@ -162,17 +164,17 @@ const AdminDashboard = () => {
 
   if (dashboardData.loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white p-6">
-        <div className="animate-pulse space-y-6">
-          <div className="h-8 bg-gray-200 rounded w-1/4 mb-8"></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6">
+        <div className="animate-pulse space-y-4 sm:space-y-6">
+          <div className="h-6 sm:h-8 bg-gray-200 rounded w-1/2 sm:w-1/4 mb-6 sm:mb-8"></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-32 bg-gray-100 rounded-xl"></div>
+              <div key={i} className="h-24 sm:h-32 bg-gray-100 rounded-xl"></div>
             ))}
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="h-64 bg-gray-100 rounded-xl"></div>
-            <div className="h-64 bg-gray-100 rounded-xl"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="h-48 sm:h-64 bg-gray-100 rounded-xl"></div>
+            <div className="h-48 sm:h-64 bg-gray-100 rounded-xl"></div>
           </div>
         </div>
       </div>
@@ -181,13 +183,13 @@ const AdminDashboard = () => {
 
   if (dashboardData.error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white p-6">
-        <div className="bg-red-50 border border-red-200 text-red-700 p-6 rounded-xl">
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6">
+        <div className="bg-red-50 border border-red-200 text-red-700 p-4 sm:p-6 rounded-xl">
           <div className="flex items-center">
-            <FiAlertTriangle className="w-5 h-5 mr-2" />
-            <span className="font-medium">Error loading dashboard</span>
+            <FiAlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+            <span className="font-medium text-sm sm:text-base">Error loading dashboard</span>
           </div>
-          <p className="mt-2 text-sm">{dashboardData.error}</p>
+          <p className="mt-2 text-xs sm:text-sm">{dashboardData.error}</p>
         </div>
       </div>
     );
@@ -200,11 +202,11 @@ const AdminDashboard = () => {
       {/* Header */}
       <div className="relative bg-gradient-to-r from-[#003049] via-[#d62828] to-[#f77f00] text-white">
         <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative z-10 p-8">
+        <div className="relative z-10 p-4 sm:p-6 lg:p-8">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-bold mb-2"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
           >
             Admin Dashboard
           </motion.h1>
@@ -212,19 +214,19 @@ const AdminDashboard = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-white/90 flex items-center"
+            className="text-white/90 flex items-center text-sm sm:text-base"
           >
-            <FiActivity className="w-5 h-5 mr-2" />
+            <FiActivity className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Platform Overview & Analytics
           </motion.p>
         </div>
       </div>
 
-      <div className="p-8">
+      <div className="p-4 sm:p-6 lg:p-8">
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <StatCard
-            icon={<FiUsers className="h-7 w-7 text-[#003049]" />}
+            icon={<FiUsers className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-[#003049]" />}
             title="Total Students"
             value={counts.totalStudents?.toLocaleString() || "0"}
             subtitle={`${counts.recentStudentCount || 0} new this week`}
@@ -236,7 +238,7 @@ const AdminDashboard = () => {
           />
 
           <StatCard
-            icon={<FiCalendar className="h-7 w-7 text-[#f77f00]" />}
+            icon={<FiCalendar className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-[#f77f00]" />}
             title="Total Appointments"
             value={counts.totalAppointments?.toLocaleString() || "0"}
             subtitle="All time bookings"
@@ -248,7 +250,7 @@ const AdminDashboard = () => {
           />
 
           <StatCard
-            icon={<FiMessageCircle className="h-7 w-7 text-[#fcbf49]" />}
+            icon={<FiMessageCircle className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-[#fcbf49]" />}
             title="Chat Sessions"
             value={counts.totalChats?.toLocaleString() || "0"}
             subtitle={`${chatMetrics.totalMessages?.toLocaleString() || 0} total messages`}
@@ -261,9 +263,9 @@ const AdminDashboard = () => {
         </div>
 
         {/* Secondary Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <StatCard
-            icon={<FiUserCheck className="h-6 w-6 text-green-600" />}
+            icon={<FiUserCheck className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />}
             title="Active Counselors"
             value={counts.totalCounselors?.toLocaleString() || "0"}
             subtitle="Available for appointments"
@@ -273,7 +275,7 @@ const AdminDashboard = () => {
           />
 
           <StatCard
-            icon={<FiBook className="h-6 w-6 text-purple-600" />}
+            icon={<FiBook className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />}
             title="Journal Entries"
             value={counts.totalJournals?.toLocaleString() || "0"}
             subtitle="Student reflections"
@@ -283,7 +285,7 @@ const AdminDashboard = () => {
           />
 
           <StatCard
-            icon={<FiActivity className="h-6 w-6 text-indigo-600" />}
+            icon={<FiActivity className="h-5 w-5 sm:h-6 sm:w-6 text-indigo-600" />}
             title="Avg Messages/Chat"
             value={Math.round(chatMetrics.averageMessagesPerChat || 0)}
             subtitle="Engagement metric"
@@ -294,7 +296,7 @@ const AdminDashboard = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Recent Activity */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -302,27 +304,28 @@ const AdminDashboard = () => {
             transition={{ delay: 0.7, duration: 0.5 }}
             className="lg:col-span-2"
           >
-            <Card className="p-6 bg-white shadow-lg border-0">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-gray-900 flex items-center">
-                  <FiClock className="w-5 h-5 mr-2 text-[#003049]" />
+            <Card className="p-4 sm:p-6 bg-white shadow-lg border-0">
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-lg sm:text-xl font-bold text-gray-900 flex items-center">
+                  <FiClock className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-[#003049]" />
                   Recent Activity
                 </h2>
-                <div className="flex items-center text-sm text-gray-500">
-                  <FiEye className="w-4 h-4 mr-1" />
-                  Live updates
+                <div className="flex items-center text-xs sm:text-sm text-gray-500">
+                  <FiEye className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                  <span className="hidden sm:inline">Live updates</span>
+                  <span className="sm:hidden">Live</span>
                 </div>
               </div>
               
-              <div className="space-y-2 max-h-96 overflow-y-auto">
+              <div className="space-y-1 sm:space-y-2 max-h-80 sm:max-h-96 overflow-y-auto">
                 {formatRecentActivity().length > 0 ? (
                   formatRecentActivity().map((activity, index) => (
                     <ActivityCard key={index} activity={activity} index={index} />
                   ))
                 ) : (
-                  <div className="text-center py-8 text-gray-500">
-                    <FiActivity className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-                    <p>No recent activity</p>
+                  <div className="text-center py-6 sm:py-8 text-gray-500">
+                    <FiActivity className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 text-gray-300" />
+                    <p className="text-sm sm:text-base">No recent activity</p>
                   </div>
                 )}
               </div>
@@ -335,13 +338,14 @@ const AdminDashboard = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
           >
-            <Card className="p-6 bg-white shadow-lg border-0">
-              <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                <FiTrendingUp className="w-5 h-5 mr-2 text-[#003049]" />
-                Chat Categories
+            <Card className="p-4 sm:p-6 bg-white shadow-lg border-0">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
+                <FiTrendingUp className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-[#003049]" />
+                <span className="hidden sm:inline">Chat Categories</span>
+                <span className="sm:hidden">Categories</span>
               </h2>
               
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {categoryBreakdown.length > 0 ? (
                   categoryBreakdown.map((category, index) => {
                     const colors = [
@@ -360,17 +364,17 @@ const AdminDashboard = () => {
                         transition={{ delay: 0.9 + index * 0.1 }}
                         className="flex items-center justify-between"
                       >
-                        <div className="flex items-center flex-1">
-                          <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${colors[index % colors.length]} mr-3`}></div>
-                          <span className="text-sm font-medium text-gray-700 capitalize">
+                        <div className="flex items-center flex-1 min-w-0">
+                          <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gradient-to-r ${colors[index % colors.length]} mr-2 sm:mr-3 flex-shrink-0`}></div>
+                          <span className="text-xs sm:text-sm font-medium text-gray-700 capitalize truncate">
                             {category._id || 'Uncategorized'}
                           </span>
                         </div>
-                        <div className="flex items-center">
-                          <span className="text-sm font-bold text-gray-900 mr-2">
+                        <div className="flex items-center ml-2">
+                          <span className="text-xs sm:text-sm font-bold text-gray-900 mr-1 sm:mr-2">
                             {category.count}
                           </span>
-                          <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="w-12 sm:w-16 h-1.5 sm:h-2 bg-gray-200 rounded-full overflow-hidden">
                             <div 
                               className={`h-full bg-gradient-to-r ${colors[index % colors.length]} transition-all duration-1000`}
                               style={{ 
@@ -383,9 +387,9 @@ const AdminDashboard = () => {
                     );
                   })
                 ) : (
-                  <div className="text-center py-8 text-gray-500">
-                    <FiMessageCircle className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-                    <p>No chat data available</p>
+                  <div className="text-center py-6 sm:py-8 text-gray-500">
+                    <FiMessageCircle className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-2 sm:mb-3 text-gray-300" />
+                    <p className="text-sm sm:text-base">No chat data available</p>
                   </div>
                 )}
               </div>

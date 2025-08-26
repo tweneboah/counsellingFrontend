@@ -193,20 +193,20 @@ const CounselorsManagement = () => {
 
   // Render stats cards
   const renderStatsCards = () => (
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-gradient-to-br from-[#003049] to-[#0056b3] rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-[#003049] to-[#0056b3] rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-blue-100 text-sm font-medium">Total Counselors</p>
-            <p className="text-2xl font-bold">{stats.total}</p>
+            <p className="text-blue-100 text-xs sm:text-sm font-medium">Total Counselors</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.total}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiUsers className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiUsers className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -215,15 +215,15 @@ const CounselorsManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-green-100 text-sm font-medium">Active</p>
-            <p className="text-2xl font-bold">{stats.active}</p>
+            <p className="text-green-100 text-xs sm:text-sm font-medium">Active</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.active}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiUserCheck className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiUserCheck className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -232,15 +232,15 @@ const CounselorsManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-red-100 text-sm font-medium">Inactive</p>
-            <p className="text-2xl font-bold">{stats.inactive}</p>
+            <p className="text-red-100 text-xs sm:text-sm font-medium">Inactive</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.inactive}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiUserX className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiUserX className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -249,15 +249,15 @@ const CounselorsManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="bg-gradient-to-br from-[#d62828] to-[#f77f00] rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-[#d62828] to-[#f77f00] rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-red-100 text-sm font-medium">Admins</p>
-            <p className="text-2xl font-bold">{stats.admins}</p>
+            <p className="text-red-100 text-xs sm:text-sm font-medium">Admins</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.admins}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiShield className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiShield className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -266,15 +266,15 @@ const CounselorsManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className="bg-gradient-to-br from-[#f77f00] to-[#fcbf49] rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-[#f77f00] to-[#fcbf49] rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-orange-100 text-sm font-medium">Counselors</p>
-            <p className="text-2xl font-bold">{stats.counselors}</p>
+            <p className="text-orange-100 text-xs sm:text-sm font-medium">Counselors</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.counselors}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiUser className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiUser className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -431,29 +431,30 @@ const CounselorsManagement = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
-            <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-[#003049] to-[#d62828] bg-clip-text text-transparent">
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#003049] to-[#d62828] bg-clip-text text-transparent truncate">
                 Counselors Management
               </h1>
-              <p className="text-gray-600 mt-1">Manage and monitor all counselors and administrators</p>
+              <p className="text-gray-600 mt-1 text-sm sm:text-base">Manage and monitor all counselors and administrators</p>
             </div>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#003049] to-[#0056b3] text-white rounded-lg hover:from-[#002a3f] hover:to-[#004494] transition-all duration-200 font-medium"
+              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#003049] to-[#0056b3] text-white rounded-lg hover:from-[#002a3f] hover:to-[#004494] transition-all duration-200 font-medium text-sm sm:text-base"
               onClick={() => setShowRegisterModal(true)}
             >
-              <FiPlus className="w-5 h-5 mr-2" />
-              Register New Counselor
+              <FiPlus className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Register New Counselor</span>
+              <span className="sm:hidden">Register</span>
             </motion.button>
           </div>
         </motion.div>
@@ -466,17 +467,17 @@ const CounselorsManagement = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6"
+          className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-4 sm:mb-6"
         >
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 flex-1">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-3 flex-1">
               {/* Search */}
-              <div className="relative flex-1 max-w-md">
+              <div className="relative flex-1 lg:max-w-md">
                 <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <input
                   type="text"
                   placeholder="Search by name, email, or ID..."
-                  className="w-full pl-10 pr-10 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors"
+                  className="w-full pl-10 pr-10 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors text-sm sm:text-base"
                   value={searchTerm}
                   onChange={handleSearch}
                 />
@@ -490,39 +491,42 @@ const CounselorsManagement = () => {
                 )}
               </div>
 
-              {/* Role Filter */}
-              <select
-                className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors"
-                value={filterRole}
-                onChange={(e) => setFilterRole(e.target.value)}
-              >
-                <option value="">All Roles</option>
-                <option value="admin">Admin</option>
-                <option value="counselor">Counselor</option>
-                <option value="moderator">Moderator</option>
-              </select>
+              <div className="flex space-x-3">
+                {/* Role Filter */}
+                <select
+                  className="px-3 sm:px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors text-sm sm:text-base flex-1 sm:flex-none"
+                  value={filterRole}
+                  onChange={(e) => setFilterRole(e.target.value)}
+                >
+                  <option value="">All Roles</option>
+                  <option value="admin">Admin</option>
+                  <option value="counselor">Counselor</option>
+                  <option value="moderator">Moderator</option>
+                </select>
 
-              {/* Status Filter */}
-              <select
-                className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors"
-                value={filterStatus}
-                onChange={(e) => setFilterStatus(e.target.value)}
-              >
-                <option value="">All Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-              </select>
+                {/* Status Filter */}
+                <select
+                  className="px-3 sm:px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors text-sm sm:text-base flex-1 sm:flex-none"
+                  value={filterStatus}
+                  onChange={(e) => setFilterStatus(e.target.value)}
+                >
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </div>
             </div>
 
             {/* Clear Filters Button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+              className="flex items-center px-3 sm:px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm sm:text-base"
               onClick={clearFilters}
             >
-              <FiRefreshCw className="w-4 h-4 mr-2" />
-              Clear Filters
+              <FiRefreshCw className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">Clear Filters</span>
+              <span className="sm:hidden">Clear</span>
             </motion.button>
           </div>
         </motion.div>

@@ -229,20 +229,20 @@ const AppointmentsManagement = () => {
 
   // Render stats cards
   const renderStatsCards = () => (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="bg-gradient-to-br from-[#003049] to-[#0056b3] rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-[#003049] to-[#0056b3] rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-blue-100 text-sm font-medium">Total Appointments</p>
-            <p className="text-2xl font-bold">{stats.total}</p>
+            <p className="text-blue-100 text-xs sm:text-sm font-medium">Total Appointments</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.total}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiCalendar className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiCalendar className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -251,15 +251,15 @@ const AppointmentsManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-gradient-to-br from-[#f77f00] to-[#fcbf49] rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-[#f77f00] to-[#fcbf49] rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-orange-100 text-sm font-medium">Upcoming</p>
-            <p className="text-2xl font-bold">{stats.upcoming}</p>
+            <p className="text-orange-100 text-xs sm:text-sm font-medium">Upcoming</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.upcoming}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiTrendingUp className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiTrendingUp className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -268,15 +268,15 @@ const AppointmentsManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-green-100 text-sm font-medium">Completed</p>
-            <p className="text-2xl font-bold">{stats.completed}</p>
+            <p className="text-green-100 text-xs sm:text-sm font-medium">Completed</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.completed}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiCheckCircle className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiCheckCircle className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -285,15 +285,15 @@ const AppointmentsManagement = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="bg-gradient-to-br from-[#d62828] to-[#f77f00] rounded-xl p-6 text-white"
+        className="bg-gradient-to-br from-[#d62828] to-[#f77f00] rounded-xl p-4 sm:p-6 text-white"
       >
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-red-100 text-sm font-medium">Cancelled</p>
-            <p className="text-2xl font-bold">{stats.cancelled}</p>
+            <p className="text-red-100 text-xs sm:text-sm font-medium">Cancelled</p>
+            <p className="text-xl sm:text-2xl font-bold">{stats.cancelled}</p>
           </div>
-          <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-            <FiXCircle className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/20 rounded-lg flex items-center justify-center">
+            <FiXCircle className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
       </motion.div>
@@ -314,57 +314,57 @@ const AppointmentsManagement = () => {
       >
         <div className={`h-1 bg-gradient-to-r ${typeDetails.color}`} />
         
-        <div className="p-6">
-          <div className="flex justify-between items-start mb-4">
-            <div className="flex-1">
+        <div className="p-4 sm:p-6">
+          <div className="flex justify-between items-start mb-3 sm:mb-4">
+            <div className="flex-1 min-w-0">
               <div className="flex items-center mb-2">
-                <div className={`w-10 h-10 rounded-lg ${typeDetails.bgColor} flex items-center justify-center mr-3`}>
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${typeDetails.bgColor} flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0`}>
                   <div className={`text-transparent bg-gradient-to-r ${typeDetails.color} bg-clip-text`}>
                     {typeDetails.icon}
                   </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900 text-lg">
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-semibold text-gray-900 text-base sm:text-lg truncate">
                     {appointment.title}
                   </h3>
-                  <p className="text-sm text-gray-500 capitalize">
+                  <p className="text-xs sm:text-sm text-gray-500 capitalize truncate">
                     {appointment.type || "Meeting"}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-end space-y-2">
+            <div className="flex flex-col items-end space-y-2 ml-2">
               {getStatusBadge(appointment.status)}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
             <div className="space-y-2">
-              <div className="flex items-center text-gray-600 text-sm">
-                <FiCalendar className="w-4 h-4 mr-2 text-[#003049]" />
-                {formatDate(appointment.appointmentDate)}
+              <div className="flex items-center text-gray-600 text-xs sm:text-sm">
+                <FiCalendar className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#003049] flex-shrink-0" />
+                <span className="truncate">{formatDate(appointment.appointmentDate)}</span>
               </div>
-              <div className="flex items-center text-gray-600 text-sm">
-                <FiClock className="w-4 h-4 mr-2 text-[#f77f00]" />
-                {formatTime(appointment.appointmentDate)} ({appointment.duration} min)
+              <div className="flex items-center text-gray-600 text-xs sm:text-sm">
+                <FiClock className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#f77f00] flex-shrink-0" />
+                <span className="truncate">{formatTime(appointment.appointmentDate)} ({appointment.duration} min)</span>
               </div>
             </div>
             
             <div className="space-y-2">
               {appointment.location && (
-                <div className="flex items-center text-gray-600 text-sm">
-                  <FiMapPin className="w-4 h-4 mr-2 text-[#d62828]" />
-                  {appointment.location}
+                <div className="flex items-center text-gray-600 text-xs sm:text-sm">
+                  <FiMapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#d62828] flex-shrink-0" />
+                  <span className="truncate">{appointment.location}</span>
                 </div>
               )}
               {appointment.zoomLink && (
-                <div className="flex items-center text-gray-600 text-sm">
-                  <FiVideo className="w-4 h-4 mr-2 text-[#f77f00]" />
+                <div className="flex items-center text-gray-600 text-xs sm:text-sm">
+                  <FiVideo className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-[#f77f00] flex-shrink-0" />
                   <a
                     href={appointment.zoomLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#003049] hover:text-[#d62828] transition-colors"
+                    className="text-[#003049] hover:text-[#d62828] transition-colors truncate"
                   >
                     Join Meeting
                   </a>
@@ -373,38 +373,39 @@ const AppointmentsManagement = () => {
             </div>
           </div>
 
-          <div className="bg-gray-50 rounded-lg p-4 mb-4">
-            <p className="text-sm text-gray-600">
+          <div className="bg-gray-50 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4">
+            <p className="text-xs sm:text-sm text-gray-600">
               <span className="font-medium text-gray-900">Reason:</span> {appointment.reason}
             </p>
           </div>
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#003049] to-[#0056b3] rounded-full flex items-center justify-center mr-3">
-                <FiUser className="w-5 h-5 text-white" />
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <div className="flex items-center min-w-0 flex-1">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-[#003049] to-[#0056b3] rounded-full flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
+                <FiUser className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
-              <div>
-                <p className="font-medium text-gray-900">
+              <div className="min-w-0 flex-1">
+                <p className="font-medium text-gray-900 text-sm sm:text-base truncate">
                   {appointment.student?.fullName || "Student"}
                 </p>
-                <div className="flex items-center text-sm text-gray-500">
-                  <FiMail className="w-3 h-3 mr-1" />
-                  {appointment.student?.email || ""}
+                <div className="flex items-center text-xs sm:text-sm text-gray-500">
+                  <FiMail className="w-3 h-3 mr-1 flex-shrink-0" />
+                  <span className="truncate">{appointment.student?.email || ""}</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex space-x-2">
+            <div className="flex space-x-1 sm:space-x-2 flex-shrink-0">
               {appointment.status !== "Completed" && (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center px-3 py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-sm font-medium"
+                  className="flex items-center px-2 py-1 sm:px-3 sm:py-2 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition-colors text-xs sm:text-sm font-medium"
                   onClick={() => handleUpdateStatus(appointment._id, "Completed")}
                 >
-                  <FiCheck className="w-4 h-4 mr-1" />
-                  Complete
+                  <FiCheck className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                  <span className="hidden sm:inline">Complete</span>
+                  <span className="sm:hidden">✓</span>
                 </motion.button>
               )}
 
@@ -412,11 +413,12 @@ const AppointmentsManagement = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center px-3 py-2 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
+                  className="flex items-center px-2 py-1 sm:px-3 sm:py-2 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors text-xs sm:text-sm font-medium"
                   onClick={() => handleUpdateStatus(appointment._id, "Cancelled")}
                 >
-                  <FiX className="w-4 h-4 mr-1" />
-                  Cancel
+                  <FiX className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                  <span className="hidden sm:inline">Cancel</span>
+                  <span className="sm:hidden">✕</span>
                 </motion.button>
               )}
             </div>
@@ -464,53 +466,62 @@ const AppointmentsManagement = () => {
               <p className="text-gray-600 mt-1">Manage and track all counseling appointments</p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-              {/* Search */}
-              <div className="relative">
-                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                <input
-                  type="text"
-                  placeholder="Search appointments..."
-                  className="pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+              <div className="flex flex-col gap-3 sm:gap-4">
+                {/* Search */}
+                <div className="w-full">
+                  <div className="relative">
+                    <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 sm:w-5 sm:h-5" />
+                    <input
+                      type="text"
+                      placeholder="Search appointments..."
+                      className="w-full pl-9 sm:pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003049] focus:border-transparent text-sm sm:text-base"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                  {/* Date Filter */}
+                  <div className="relative flex-1 sm:flex-none">
+                    <FiCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-3 h-3 sm:w-4 sm:h-4" />
+                    <input
+                      type="date"
+                      className="w-full pl-8 sm:pl-10 pr-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003049] focus:border-transparent text-sm sm:text-base"
+                      value={filterDate}
+                      onChange={(e) => setFilterDate(e.target.value)}
+                    />
+                  </div>
+
+                  {/* Status Filter */}
+                  <select
+                    className="flex-1 sm:flex-none px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003049] focus:border-transparent text-sm sm:text-base"
+                    value={filterStatus}
+                    onChange={(e) => setFilterStatus(e.target.value)}
+                  >
+                    <option value="">All Status</option>
+                    <option value="Scheduled">Scheduled</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                  </select>
+
+                  {/* Reset Button */}
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-3 sm:px-4 py-2 sm:py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center text-sm sm:text-base"
+                    onClick={() => {
+                      setFilterDate("");
+                      setFilterStatus("");
+                      setSearchTerm("");
+                    }}
+                  >
+                    <FiRefreshCw className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Reset</span>
+                  </motion.button>
+                </div>
               </div>
-
-              {/* Date Filter */}
-              <input
-                type="date"
-                className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors"
-                value={filterDate}
-                onChange={(e) => setFilterDate(e.target.value)}
-              />
-
-              {/* Status Filter */}
-              <select
-                className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#003049]/20 focus:border-[#003049] transition-colors"
-                value={filterStatus}
-                onChange={(e) => setFilterStatus(e.target.value)}
-              >
-                <option value="">All Status</option>
-                <option value="Scheduled">Scheduled</option>
-                <option value="Completed">Completed</option>
-                <option value="Cancelled">Cancelled</option>
-              </select>
-
-              {/* Reset Button */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center px-4 py-2 bg-gradient-to-r from-[#003049] to-[#0056b3] text-white rounded-lg hover:from-[#002a3f] hover:to-[#004494] transition-all duration-200"
-                onClick={() => {
-                  setFilterDate("");
-                  setFilterStatus("");
-                  setSearchTerm("");
-                }}
-              >
-                <FiRefreshCw className="w-4 h-4 mr-2" />
-                Reset
-              </motion.button>
             </div>
           </div>
         </motion.div>
